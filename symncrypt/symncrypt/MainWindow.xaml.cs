@@ -81,6 +81,16 @@ public partial class MainWindow : Window
                 alg = TripleDES.Create();
                 break;
         }
+        if(this.txtKey != null)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in alg.Key)
+            {
+                sb.Append(item);
+                sb.Append(" ");
+            }
+            this.txtKey.Text = sb.ToString().Trim();
+        }
     }
 
     private void cmbModOperare_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,5 +101,16 @@ public partial class MainWindow : Window
     private void cmbPadding_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         alg.Padding = (PaddingMode)cmbPadding.SelectedValue;
+    }
+
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in alg.Key)
+        {
+            sb.Append(item);
+            sb.Append(" ");
+        }
+        this.txtKey.Text = sb.ToString().Trim();
     }
 }
