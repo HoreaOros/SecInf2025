@@ -14,103 +14,111 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*" />
-            <ColumnDefinition MinWidth="100" />
+            <ColumnDefinition MinWidth="100" Width="*" />
         </Grid.ColumnDefinitions>
         <Border BorderBrush="Black"
                 BorderThickness="1"
                 Margin="10,10,10,10"
                 CornerRadius="10,10,10,10"
-                Grid.Column="1" />
+                Grid.Column="1">
+            <StackPanel Grid.Column="1"
+                        VerticalAlignment="Center">
+                <Button x:Name="btnEncrypt"
+                        Content="Encrypt"
+                        Margin="{DynamicResource Margin15}"
+                        Click="btnEncrypt_Click" />
+                <Button x:Name="btnDecrypt"
+                        Content="Decrypt"
+                        Margin="{DynamicResource Margin15}"
+                        Click="btnDecrypt_Click" />
+            </StackPanel>
+        </Border>
 
         <Border BorderBrush="Black"
                 BorderThickness="1"
                 Margin="10,10,10,10"
-                CornerRadius="10,10,10,10" />
-        <StackPanel Margin="{DynamicResource Margin15}">
-            <DockPanel LastChildFill="True">
-                <TextBlock DockPanel.Dock="Left"
-                           Text="Input File"
-                           Margin="{DynamicResource Margin15}"
-                           Width="120" />
-                <Button DockPanel.Dock="Right"
-                        x:Name="btnBrowseInput"
-                        Content="Browse"
-                        HorizontalContentAlignment="Center"
-                        Margin="{DynamicResource Margin15}"
-                        Click="btnBrowseInput_Click" />
-                <TextBox x:Name="txtInputFile"
-                         TextWrapping="Wrap"
-                         Text="&lt;Filename&gt;"
-                         Width="Auto"
-                         MinWidth="200"
-                         Margin="{DynamicResource Margin15}" />
+                CornerRadius="10,10,10,10">
+            <StackPanel Margin="{DynamicResource Margin15}">
+                <DockPanel LastChildFill="True">
+                    <TextBlock DockPanel.Dock="Left"
+                               Text="Input File"
+                               Margin="{DynamicResource Margin15}"
+                               Width="120" />
+                    <Button DockPanel.Dock="Right"
+                            x:Name="btnBrowseInput"
+                            Content="Browse"
+                            HorizontalContentAlignment="Center"
+                            Margin="{DynamicResource Margin15}"
+                            Click="btnBrowseInput_Click" />
+                    <TextBox x:Name="txtInputFile"
+                             TextWrapping="Wrap"
+                             Text="&lt;Filename&gt;"
+                             Width="Auto"
+                             MinWidth="200"
+                             Margin="{DynamicResource Margin15}" />
 
-            </DockPanel>
-            <DockPanel LastChildFill="True">
-                <TextBlock DockPanel.Dock="Left"
-                           Text="Output File"
-                           Margin="{DynamicResource Margin15}"
-                           Width="120" />
-                <Button DockPanel.Dock="Right"
-                        x:Name="btnBrowseOutput"
-                        Content="Browse"
-                        HorizontalContentAlignment="Center"
-                        Margin="{DynamicResource Margin15}" />
-                <TextBox x:Name="txtOutputFile"
-                         TextWrapping="Wrap"
-                         Text="&lt;Filename&gt;"
-                         Width="Auto"
-                         MinWidth="200"
-                         Margin="{DynamicResource Margin15}" />
-            </DockPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock TextWrapping="Wrap"
-                           Text="Algoritm"
-                           Margin="{DynamicResource Margin15}"
-                           Width="120" />
-                <ComboBox Width="120"
-                          Margin="{DynamicResource Margin15}"
-                          SelectedIndex="0">
-                    <ComboBoxItem Content="DES" />
-                    <ComboBoxItem Content="TripeDES" />
-                    <ComboBoxItem Content="Rijndael" />
-                    <ComboBoxItem Content="RC2" />
-                    <ComboBoxItem Content="AES" />
-                </ComboBox>
-            </StackPanel>
+                </DockPanel>
+                <DockPanel LastChildFill="True">
+                    <TextBlock DockPanel.Dock="Left"
+                               Text="Output File"
+                               Margin="{DynamicResource Margin15}"
+                               Width="120" />
+                    <Button DockPanel.Dock="Right"
+                            x:Name="btnBrowseOutput"
+                            Content="Browse"
+                            HorizontalContentAlignment="Center"
+                            Margin="{DynamicResource Margin15}" />
+                    <TextBox x:Name="txtOutputFile"
+                             TextWrapping="Wrap"
+                             Text="&lt;Filename&gt;"
+                             Width="Auto"
+                             MinWidth="200"
+                             Margin="{DynamicResource Margin15}" />
+                </DockPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap"
+                               Text="Algoritm"
+                               Margin="{DynamicResource Margin15}"
+                               Width="120" />
+                    <ComboBox x:Name="cmbAlgo"
+                              Width="120"
+                              Margin="{DynamicResource Margin15}"
+                              SelectedIndex="0"
+                              SelectionChanged="cmbAlgo_SelectionChanged">
+                        <ComboBoxItem Content="DES" />
+                        <ComboBoxItem Content="TripeDES" />
+                        <ComboBoxItem Content="Rijndael" />
+                        <ComboBoxItem Content="RC2" />
+                        <ComboBoxItem Content="AES" />
+                    </ComboBox>
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock TextWrapping="Wrap"
-                           Text="Mod de operare"
-                           Margin="{DynamicResource Margin15}"
-                           Width="120" />
-                <ComboBox x:Name="cmbModOperare"
-                          Width="120"
-                          Margin="{DynamicResource Margin15}"
-                          SelectedIndex="0" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap"
+                               Text="Mod de operare"
+                               Margin="{DynamicResource Margin15}"
+                               Width="120" />
+                    <ComboBox x:Name="cmbModOperare"
+                              Width="120"
+                              Margin="{DynamicResource Margin15}"
+                              SelectedIndex="0"
+                              SelectionChanged="cmbModOperare_SelectionChanged" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap"
+                               Text="Padding"
+                               Margin="{DynamicResource Margin15}"
+                               Width="120" />
+                    <ComboBox x:Name="cmbPadding"
+                              Width="120"
+                              Margin="{DynamicResource Margin15}"
+                              SelectedIndex="0"
+                              SelectionChanged="cmbPadding_SelectionChanged" />
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock TextWrapping="Wrap"
-                           Text="Padding"
-                           Margin="{DynamicResource Margin15}"
-                           Width="120" />
-                <ComboBox x:Name="cmbPadding"
-                          Width="120"
-                          Margin="{DynamicResource Margin15}"
-                          SelectedIndex="0" />
-            </StackPanel>
-        </StackPanel>
-        <StackPanel Grid.Column="1"
-                    VerticalAlignment="Center">
-            <Button x:Name="btnEncrypt"
-                    Content="Encrypt"
-                    Margin="{DynamicResource Margin15}"
-                    Click="btnEncrypt_Click" />
-            <Button x:Name="btnDecrypt"
-                    Content="Decrypt"
-                    Margin="15,15,15,15"
-                    Click="btnDecrypt_Click" />
-        </StackPanel>
+        </Border>
+        
+        
 
     </Grid>
 </Window>
