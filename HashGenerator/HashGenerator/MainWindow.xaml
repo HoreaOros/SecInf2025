@@ -53,5 +53,44 @@
                    Text="Result"
                    VerticalAlignment="Center"
                    FontSize="20" />
+        <Button Grid.Column="1"
+                Content="Browse"
+                HorizontalAlignment="Left"
+                Margin="10,10,10,10"
+                VerticalAlignment="Center"
+                FontSize="20"
+                Click="Button_Click" />
+        <TextBlock x:Name="txtFileName"
+                   Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   Margin="10,10,10,10"
+                   Grid.Row="1"
+                   TextWrapping="Wrap"
+                   Text=""
+                   VerticalAlignment="Center"
+                   FontSize="20" />
+        <ComboBox Grid.Column="1"
+                  HorizontalAlignment="Left"
+                  Margin="10,10,10,10"
+                  Grid.Row="2"
+                  VerticalAlignment="Center"
+                  Width="120"
+                  FontSize="20"
+                  SelectedIndex="0"
+                  SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBoxItem Content="MD5" />
+            <ComboBoxItem Content="SHA1" />
+            <ComboBoxItem Content="SHA256" />
+            <ComboBoxItem Content="SHA3_512" />
+        </ComboBox>
+        <TextBlock x:Name="txtResult"
+                   Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   Margin="10,10,10,10"
+                   Grid.Row="3"
+                   TextWrapping="Wrap"
+                   Text=""
+                   FontSize="20"
+                   VerticalAlignment="Center" />
     </Grid>
 </Window>
